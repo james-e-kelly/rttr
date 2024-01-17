@@ -392,11 +392,9 @@ endfunction()
 ####################################################################################
 function( set_compiler_warnings target)
   if(CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
-    set(WARNINGS "-Werror"
-                 "-Wall")
+    set(WARNINGS "-Wall")
   elseif(CMAKE_CXX_COMPILER_ID MATCHES "Clang")
-    set(WARNINGS "-Werror"
-                 "-Wall")
+    set(WARNINGS "-Wall")
   elseif(MSVC)
     set(WARNINGS "/WX"
                  "/W4")
