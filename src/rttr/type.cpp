@@ -192,6 +192,15 @@ variant type::get_metadata(const variant& key) const
 
 /////////////////////////////////////////////////////////////////////////////////////////
 
+variant rttr::type::create_default() const
+{
+    // simply calls the create function with empty args
+    // see https://github.com/llvm/llvm-project/issues/57700 for why this is done
+    return create(vector<argument>());
+}
+
+/////////////////////////////////////////////////////////////////////////////////////////
+
 variant type::create(vector<argument> args) const
 {
     auto& ctors = m_type_data->m_class_data.m_ctors;

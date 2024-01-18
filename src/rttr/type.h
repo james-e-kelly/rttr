@@ -28,6 +28,7 @@
 #ifndef RTTR_TYPE_H_
 #define RTTR_TYPE_H_
 
+//#include "rttr/argument.h"  // required for clang libc++15. see https://github.com/llvm/llvm-project/issues/57700
 #include "rttr/detail/base/core_prerequisites.h"
 #include "rttr/string_view.h"
 #include "rttr/array_range.h"
@@ -670,6 +671,14 @@ class RTTR_API type
          * \return A range of properties.
          */
         array_range<constructor> get_constructors(filter_items filter) const RTTR_NOEXCEPT;
+        
+        /*!
+         * \brief Creates an instance of the current type with no arguments passed.
+         *
+         *
+         * \return Returns an instance of the given type.
+         */
+        variant create_default() const;
 
         /*!
          * \brief Creates an instance of the current type, with the given arguments \p args for the constructor.
@@ -679,7 +688,7 @@ class RTTR_API type
          *
          * \return Returns an instance of the given type.
          */
-        variant create(std::vector<argument> args = std::vector<argument>()) const;
+        variant create(std::vector<argument> args) const;
 
         /*!
          * \brief Returns the corresponding destructor for this type.
