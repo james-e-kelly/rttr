@@ -194,7 +194,7 @@ TEST_CASE("library - using types", "[library]")
 
         {
             auto t = type::get_by_name("test_plugin_class");
-            variant var_obj = t.create();
+            variant var_obj = t.create_default();
             CHECK(var_obj.get_type() == t);
 
             auto prop = t.get_property("point");
@@ -226,7 +226,7 @@ TEST_CASE("library - using types", "[library]")
 
         {
             auto t = type::get_by_name("test_container_plugin");
-            variant var_obj = t.create();
+            variant var_obj = t.create_default();
             CHECK(var_obj.is_valid() == true);
 
             auto prop = t.get_property("my_array");
