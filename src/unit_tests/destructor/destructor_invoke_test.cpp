@@ -55,7 +55,7 @@ TEST_CASE("destructor - invoke", "[destructor]")
 
     SECTION("Invoke positive")
     {
-        variant var = t.create();
+        variant var = t.create_default();
 
         CHECK(var.is_valid() == true);
 
@@ -90,7 +90,7 @@ TEST_CASE("destructor - invoke", "[destructor]")
 
 TEST_CASE("destructor - via type", "[destructor]")
 {
-    variant var = type::get<dtor_invoke_test>().create();
+    variant var = type::get<dtor_invoke_test>().create_default();
     REQUIRE(var.get_type() == type::get<dtor_invoke_test*>());
     CHECK(var.get_type().destroy(var) == true);
     CHECK(var.is_valid() == false);

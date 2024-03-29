@@ -115,7 +115,7 @@ RTTR_REGISTRATION
 
 TEST_CASE("constructor - default ctor binding type", "[constructor]")
 {
-    variant var = type::get<not_copyable_ctor>().create();
+    variant var = type::get<not_copyable_ctor>().create_default();
 
     CHECK(var.get_type() == type::get<std::shared_ptr<not_copyable_ctor>>());
 }
