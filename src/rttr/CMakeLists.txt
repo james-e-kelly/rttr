@@ -99,6 +99,7 @@ if (BUILD_STATIC)
     
     if (MSVC)
         set_target_properties(rttr_core_lib PROPERTIES OUTPUT_NAME librttr_core)
+	target_compile_options(rttr_core_lib PUBLIC "/MD$<$<CONFIG:Debug>:d>")
     elseif (CMAKE_COMPILER_IS_GNUCXX)
         set_target_properties(rttr_core_lib PROPERTIES OUTPUT_NAME rttr_core)
     elseif (CMAKE_CXX_COMPILER_ID MATCHES "Clang")
